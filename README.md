@@ -1,9 +1,9 @@
 
-# 海带链部署文档
+# 海带区块链 测试网络 部署文档
 
 ### 当前网络为测试网络
 
-- 链id
+- 测试网络id
 
 ```
 haidai-testnet2
@@ -76,7 +76,7 @@ I[2020-10-12|17:40:08.559] Executed block                               module=s
 I[2020-10-12|17:40:08.574] Committed state                              module=state height=3342 txs=0 appHash=494AEEF2DF059B649A58D406DC293C7C49F3D5F1C7307805C3B619A768A79A8C
 ```
 
-- 其他操作文档请参考 `docs` 文件夹
+- 其他操作文档请参考：https://github.com/haidai-network/haidai
 
 
 
