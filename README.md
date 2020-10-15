@@ -22,12 +22,12 @@ haidai-testnet2
 
 | Filename  | Description                                     |
 | --------- | ----------------------------------------------- |
-| `haidaicli_darwin_amd64`    | OSX(苹果操作系统客户端)客户端，如果为Mac系统则使用此二进制可执行文件 |
-| `haidaiced_darwin_amd64`    | OSX(苹果操作系统客户端)链服务端，如果为Mac系统则使用此二进制可执行文件 |
-| `haidaicli_linux_amd64`   | Linux客户端，如果为Linux系统则使用此二进制可执行文件 |
-| `haidaiced_linux_amd64`    | Linux链服务端，如果为Linux系统则使用此二进制可执行文件 |
-| `haidaicli_windows_amd64.exe`    | windows客户端，如果为Windows系统则使用此二进制可执行文件 |
-| `haidaiced_windows_amd64.exe`    | windows链服务端，如果为Windows系统则使用此二进制可执行文件 |
+| haidaicli_darwin_amd64    | OSX(苹果操作系统客户端)客户端，如果为Mac系统则使用此二进制可执行文件 |
+| haidaiced_darwin_amd64    | OSX(苹果操作系统客户端)链服务端，如果为Mac系统则使用此二进制可执行文件 |
+| haidaicli_linux_amd64   | Linux客户端，如果为Linux系统则使用此二进制可执行文件 |
+| haidaiced_linux_amd64    | Linux链服务端，如果为Linux系统则使用此二进制可执行文件 |
+| haidaicli_windows_amd64.exe    | windows客户端，如果为Windows系统则使用此二进制可执行文件 |
+| haidaiced_windows_amd64.exe    | windows链服务端，如果为Windows系统则使用此二进制可执行文件 |
 
 
 **解压文件**
