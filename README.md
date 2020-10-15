@@ -1,17 +1,126 @@
+# 加入海带区块链公共测试网络
 
-# 海带区块链 测试网络 部署文档
+### 当前网络为测试网络，主网未上线
 
-### 当前网络为测试网络
-
-- 测试网络id
+- 当前测试网
 
 ```
 haidai-testnet2
 ```
 
-### 编译源码
+--- 
 
-- 国内使用goproxy.cn代理，参考：https://goproxy.cn/
+### 使用编译好的二进制文件[推荐方式]
+
+**下载文件**
+
+```
+前往 https://github.com/haidai-network/haidai-testnet/releases 下载最新测试网版本
+```
+
+**不同操作系统对应对应文件**
+
+| Filename  | Description                                     |
+| --------- | ----------------------------------------------- |
+| `haidaicli_darwin_amd64`    | OSX(苹果操作系统客户端)客户端，如果为Mac系统则使用此二进制可执行文件 |
+| `haidaiced_darwin_amd64`    | OSX(苹果操作系统客户端)链服务端，如果为Mac系统则使用此二进制可执行文件 |
+| `haidaicli_linux_amd64`   | Linux客户端，如果为Linux系统则使用此二进制可执行文件 |
+| `haidaiced_linux_amd64`    | Linux链服务端，如果为Linux系统则使用此二进制可执行文件 |
+| `haidaicli_windows_amd64.exe`    | windows客户端，如果为Windows系统则使用此二进制可执行文件 |
+| `haidaiced_windows_amd64.exe`    | windows链服务端，如果为Windows系统则使用此二进制可执行文件 |
+
+
+**解压文件**
+
+| Filename  | Description                                     |
+| --------- | ----------------------------------------------- |
+| genesis.json   | 测试网络创世文件 |
+| config.toml    | 链服务端配置文件，里面包含p2p种子节点信息 |
+| haidaixxx   | 海带链客户端，二进制可执行文件 |
+
+
+**⚠️配置二进制文件执行权限**
+
+```
+chmod +x  haidai*
+
+```
+
+**⚠️条件检查**
+
+> 如果曾经运行过海带链测试网络则必须执行此步骤，如果从未运行过海带链程序则跳过此步骤
+
+清除旧的测试网络数据，这里以Mac操作系统为例，如果为其他操作系统则使用对应的二进制可执行文件，命令步骤一样
+
+```
+// 删除创始文件，创始交易信息
+rm -f ~/.haidaied/config/genesis.json ~/.haidaied/config/gentx/*
+
+// 删除链数据
+./haidaied_darwin_amd64 unsafe-reset-all
+
+```
+
+**haidaicli 客户端配置**
+
+配置haidaicli，这里以Mac操作系统为例，如果为其他操作系统则使用对应的二进制可执行文件，命令步骤一样
+
+```
+./haidaicli_darwin_amd64 config output json
+
+./haidaicli_darwin_amd64 config indent true
+
+./haidaicli_darwin_amd64 config trust-node true
+
+// 配置公共测试网络ID，当前为 haidai-testnet2
+./haidaicli_darwin_amd64 config chain-id haidai-testnet2
+
+./haidaicli_darwin_amd64 config keyring-backend test
+
+```
+
+**haidaied 链服务端配置**
+
+配置haidaied，这里以Mac操作系统为例，如果为其他操作系统则使用对应的二进制可执行文件，命令步骤一样
+
+```
+// 配置测试网络
+./haidaied_darwin_amd64 init haidai --chain-id haidai-testnet2
+
+// 复制创始文件
+cp genesis.json ~/.haidaied/config
+
+// 复制配置文件
+cp config.toml ~/.haidaied/config
+
+// 检查创始文件正确性
+./haidaied_darwin_amd64 validate-genesis
+
+// 启动链服务
+./haidaied_darwin_amd64 start
+
+```
+
+链服务启动后会尝试连接种子节点同步区块：
+
+```
+I[2020-10-12|17:40:03.047] starting ABCI with Tendermint                module=main 
+I[2020-10-12|17:40:08.559] Executed block                               module=state height=3342 validTxs=0 invalidTxs=0
+I[2020-10-12|17:40:08.574] Committed state                              module=state height=3342 txs=0 appHash=494AEEF2DF059B649A58D406DC293C7C49F3D5F1C7307805C3B619A768A79A8C
+```
+
+**🚀haidai network 探索**
+
+参考 <https://github.com/haidai-network/haidai/blob/master/docs/haidaicli.md> 文档进行操作，探索区块链世界！
+
+
+
+---
+
+### 源码编译运行[开发人员]
+
+- 国内使用 `goproxy.cn` 代理，参考：https://goproxy.cn/
+- 也可以直接在 `Releases` 页面下载已经编译好的二进制文件，跳过此步骤
 - 根据平台编译源码，默认为OSX (darwin）操作系统
 
 编译 OSX
@@ -40,32 +149,32 @@ make build-windows
 cp build/* deploy
 ```
 
-- 进入 `deploy` 文件夹，运行 haidaicli 配置链客户端参数，这里以 OSX 平台为例：
+- 进入 `deploy` 文件夹，运行 haidaicli_darwin_amd64 配置链客户端参数，这里以 OSX 平台为例：
 
 ```
-./haidaicli config output json
-./haidaicli config indent true
-./haidaicli config trust-node true
-./haidaicli config chain-id haidai-testnet2 // 当前测试网络
-./haidaicli config keyring-backend test
+./haidaicli_darwin_amd64 config output json
+./haidaicli_darwin_amd64 config indent true
+./haidaicli_darwin_amd64 config trust-node true
+./haidaicli_darwin_amd64 config chain-id haidai-testnet2 // 当前测试网络
+./haidaicli_darwin_amd64 config keyring-backend test
 
 ```
 
 - 运行 haidaied 配置链节点参数，这里以 OSX 平台为例：
 
 ```
-./haidaied init test99 --chain-id haidai-testnet2 // 当前测试网络
+./haidaied_darwin_amd64 init test99 --chain-id haidai-testnet2 // 当前测试网络
 
-cp genesis.json ~/.haidaied/config
-cp config.toml ~/.haidaied/config
+cp genesis.json ~/.haidaied_darwin_amd64/config
+cp config.toml ~/.haidaied_darwin_amd64/config
 
-./haidaied validate-genesis
+./haidaied_darwin_amd64 validate-genesis
 ```
 
 - 启动链节点，会尝试连接种子节点同步区块
 
 ```
-./haidaied start
+./haidaied_darwin_amd64 start
 ```
 
 - 启动成功如下：
@@ -76,7 +185,9 @@ I[2020-10-12|17:40:08.559] Executed block                               module=s
 I[2020-10-12|17:40:08.574] Committed state                              module=state height=3342 txs=0 appHash=494AEEF2DF059B649A58D406DC293C7C49F3D5F1C7307805C3B619A768A79A8C
 ```
 
-- 其他操作文档请参考：https://github.com/haidai-network/haidai
+**🚀haidai network 探索**
+
+参考 <https://github.com/haidai-network/haidai/blob/master/docs/haidaicli.md> 文档进行操作，探索区块链世界！
 
 
 
