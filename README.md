@@ -1,8 +1,10 @@
-# 加入海带区块链公共测试网络
+# 加入海带区块链测试网络
 
-### 当前网络为测试网络，主网未上线
+::: tip 提示
+请查看[testnet repo](https://github.com/haidai-network/testnet)获取最新的公共测试网信息，包含了所使用的 Haidai 的正确版本和genesis文件。
+:::
 
-- 当前测试网
+- 当前测试网网络id
 
 ```
 haidai-testnet2
@@ -38,15 +40,18 @@ haidai-testnet2
 | config.toml    | 链服务端配置文件，里面包含p2p种子节点信息 |
 | haidaixxx   | 海带链客户端，二进制可执行文件 |
 
-
-**⚠️配置二进制文件执行权限**
+::: tip 提示
+配置二进制文件执行权限
+:::
 
 ```
 chmod +x  haidai*
 
 ```
 
-**⚠️条件检查**
+::: warning 注意
+条件检查
+:::
 
 > 如果曾经运行过海带链测试网络则必须执行此步骤，如果从未运行过海带链程序则跳过此步骤
 
@@ -109,21 +114,35 @@ I[2020-10-12|17:40:08.559] Executed block                               module=s
 I[2020-10-12|17:40:08.574] Committed state                              module=state height=3342 txs=0 appHash=494AEEF2DF059B649A58D406DC293C7C49F3D5F1C7307805C3B619A768A79A8C
 ```
 
-**🚀haidai network 探索**
+**🚀 haidai network 探索**
 
 参考 <https://github.com/haidai-network/haidai/blob/master/docs/haidaicli.md> 文档进行操作，探索区块链世界！
-
 
 
 ---
 
 ### 源码编译运行[开发人员]
 
+**升级软件**
+
+升级软件：
+
+```bash
+cd $GOPATH/src/github.com/haidai-network/haidai
+git fetch --all && git checkout master
+```
+
 - 国内使用 `goproxy.cn` 代理，参考：https://goproxy.cn/
 - 也可以直接在 `Releases` 页面下载已经编译好的二进制文件，跳过此步骤
 - 根据平台编译源码，默认为OSX (darwin）操作系统
 
-编译 OSX
+**编译**
+
+::: tip 提示
+ 根据操作系统情况编译，默认为mac系统，如果为其他系统，则添加系统名称，如：
+ make build-linux，make build-windows
+*注意*：如果在这一步出现问题，请检查是否安装了最新稳定版本的Go。
+:::
 
 ```
 make build
@@ -143,13 +162,7 @@ make build-windows
 
 ### 部署
 
-- 复制编译好的二进制可执行文件到 `deploy` 文件夹
-
-```
-cp build/* deploy
-```
-
-- 进入 `deploy` 文件夹，运行 haidaicli_darwin_amd64 配置链客户端参数，这里以 OSX 平台为例：
+- 进入 `build` 文件夹，运行 haidaicli_darwin_amd64 配置链客户端参数，这里以 OSX 平台为例：
 
 ```
 ./haidaicli_darwin_amd64 config output json
@@ -165,8 +178,8 @@ cp build/* deploy
 ```
 ./haidaied_darwin_amd64 init test99 --chain-id haidai-testnet2 // 当前测试网络
 
-cp genesis.json ~/.haidaied_darwin_amd64/config
-cp config.toml ~/.haidaied_darwin_amd64/config
+cp genesis.json ~/.haidaied/config
+cp config.toml ~/.haidaied/config
 
 ./haidaied_darwin_amd64 validate-genesis
 ```
@@ -188,8 +201,3 @@ I[2020-10-12|17:40:08.574] Committed state                              module=s
 **🚀haidai network 探索**
 
 参考 <https://github.com/haidai-network/haidai/blob/master/docs/haidaicli.md> 文档进行操作，探索区块链世界！
-
-
-
-
-
