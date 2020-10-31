@@ -1,7 +1,7 @@
 # 加入海带区块链测试网络
 
 ::: tip 提示
-请查看 [testnet repo](https://github.com/haidai-network/testnet)获取最新的公共测试网信息，包含了所使用的 haidai 的正确版本和 genesis，config.toml 文件。
+请查看 [testnet repo](https://github.com/haidai-network/haidai-testnet)获取最新的公共测试网信息，包含了所使用的 haidai 的正确版本和 genesis，config.toml 文件。
 :::
 
 - 当前测试网网络id
