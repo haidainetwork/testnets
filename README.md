@@ -12,5 +12,5 @@ To get started with the latest testnet, see the
 ## Testnet Status
 Source Code: [latest released version](https://github.com/haidai-network/haidai/releases)
 
-⚠️ Latest testnet: [haidaiNetwork-v1](./v1) ⚠️
-* *November 3, 2020 10:19 UTC* - haidaiNetwork-v1
+⚠️ Latest testnet: [haidai-testnet2](./v1) ⚠️
+* *November 3, 2020 10:19 UTC* - haidai-testnet2
