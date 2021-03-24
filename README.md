@@ -19,7 +19,7 @@ does not get bogged down with large genesis files and status updates
 **Download testnet file**
 
 ```
-git clone git@github.com:haidainetwork/testnets.git
+git clone https://github.com/haidainetwork/testnets.git
 ```
 
 **Reset Data**
