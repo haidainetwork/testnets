@@ -40,7 +40,6 @@ Make sure that every node has a unique `priv_validator.json`. Do not copy the `p
 
 ```
 haidaid init {your_name} --overwrite --chain-id haidai-testnet-xia
-
 ```
 
 **Software Upgrade**
@@ -49,7 +48,6 @@ haidaid init {your_name} --overwrite --chain-id haidai-testnet-xia
 cp genesis.json config.toml $HOME/.haidaid/config/
 
 haidaid start
-
 ```
 
 ***🏷️NOTE***
@@ -69,7 +67,6 @@ After haidaid start, you will connect to testnet, and you will see blow
 8:35PM INF Starting localClient service connection=consensus impl=localClient module=abci-client
 8:35PM INF Starting EventBus service impl=EventBus module=events
 8:35PM INF Starting PubSub service impl=PubSub module=pubsub
-
 ```
 
 **Config with Haidai**
